@@ -1,6 +1,6 @@
 {
-  "name": "크라센 서초 숙제인증",
-  "short_name": "숙제인증",
+  "name": "크라센 서초",
+  "short_name": "크라센 서초",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -8,8 +8,23 @@
   "theme_color": "#1b2a66",
   "lang": "ko",
   "icons": [
-    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "icon-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ]
 }
