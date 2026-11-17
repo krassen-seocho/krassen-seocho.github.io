@@ -22,7 +22,8 @@ button,a.b{margin-top:14px;border:0;background:#1b2a66;color:#fff;font-weight:70
 <script>
 (function () {
   var API = 'https://script.google.com/macros/s/AKfycbwFLEFtJGSrORQM4B9atmjGkJQGg5xjYxDLadDN2mnxiSqxnMpR1eHAK3smAV3cT4IH8g/exec';
-  var KEY = 'krassen_selc_page_v1';
+  var APP = new URLSearchParams(location.search).get('app') === 'hw' ? 'hw' : '';
+  var KEY = APP ? 'krassen_hw_page_v1' : 'krassen_selc_page_v1';
   function post(fn, args) {
     return fetch(API, { method: 'POST', credentials: 'omit', redirect: 'follow',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ fn: fn, args: args || [] }) })
@@ -73,7 +74,7 @@ button,a.b{margin-top:14px;border:0;background:#1b2a66;color:#fff;font-weight:70
     document.getElementById('box').innerHTML = '<b>화면을 불러오지 못했어요</b><p>인터넷 연결을 확인하고 다시 시도해주세요.</p><button onclick="location.reload()">다시 시도</button><br><a class="b" href="./" style="background:#8a93b3">홈으로</a>';
   }
   var cached = null; try { cached = localStorage.getItem(KEY); } catch (e) {}
-  var fresh = post('__page').then(function (j) {
+  var fresh = post('__page', APP ? [APP] : []).then(function (j) {
     if (!j || !j.ok || !j.result) throw new Error('page');
     try { localStorage.setItem(KEY, j.result); } catch (e) {}
     return j.result;
