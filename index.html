@@ -183,6 +183,7 @@ table.grid{border-collapse:collapse;width:100%;font-size:13px;font-variant-numer
 .sh-img{background:var(--bg);border-radius:12px;padding:8px;display:grid;place-items:center;min-height:120px}
 .sh-img img{width:100%;max-width:420px;border-radius:8px;display:block}
 /* 토스트 · 도장 */
+#inst{margin-top:14px;text-align:center}#inst-btn{width:100%;padding:11px 12px;font-size:14px;font-weight:700}#inst-help{margin:10px 0 0;line-height:1.6;text-align:left;background:var(--bg);border-radius:8px;padding:10px 12px}
 #toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-size:14px;z-index:60;max-width:calc(100% - 32px);opacity:0;transition:opacity .2s;pointer-events:none}
 #toast.show{opacity:1}
 #stamp{position:fixed;inset:0;display:grid;place-items:center;z-index:50;background:var(--shade)}
@@ -223,6 +224,10 @@ table.grid{border-collapse:collapse;width:100%;font-size:13px;font-variant-numer
       </div>
       <p class="err" id="s-err" hidden></p>
       <button type="button" class="primary" id="s-go">내 숙제 보기</button>
+      <div id="inst" hidden>
+        <button type="button" class="ghost" id="inst-btn">📲 앱으로 설치하기</button>
+        <p class="muted small" id="inst-help" hidden></p>
+      </div>
     </div>
 
     <div id="s-home" class="list" hidden>
@@ -1249,5 +1254,28 @@ resetHwForm();
 loadClasses();
 </script>
 <script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(function(){});</script>
+<script>
+(function () {
+  var ua = navigator.userAgent, box = document.getElementById('inst'), btn = document.getElementById('inst-btn'), help = document.getElementById('inst-help');
+  var standalone = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone;
+  if (standalone) return;
+  var ios = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var kakao = /KAKAOTALK/i.test(ua), deferred = null;
+  window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); deferred = e; });
+  window.addEventListener('appinstalled', function () { box.hidden = true; });
+  if (!/Mobi|Android|iPhone|iPad/i.test(ua) && !ios) return;
+  box.hidden = false;
+  function say(t) { help.innerHTML = t; help.hidden = false; }
+  btn.onclick = function () {
+    if (kakao) {
+      if (ios) return say('카카오톡 안에서는 설치가 안 돼요.<br>오른쪽 아래 <b>⋯</b> 또는 공유 버튼 → <b>Safari로 열기</b>를 누른 뒤, 다시 이 버튼을 눌러 주세요.');
+      location.href = 'kakaotalk://web/openExternal?url=' + encodeURIComponent(location.href); return;
+    }
+    if (deferred) { deferred.prompt(); deferred.userChoice.then(function () { deferred = null; }); return; }
+    if (ios) return say('① 사파리 아래쪽 <b>공유 버튼</b>(네모에 화살표 ↑)을 눌러요.<br>② <b>홈 화면에 추가</b>를 누르고 [추가]를 눌러요.<br>※ 사파리가 아닌 앱(카톡·네이버 등)에서 열었다면 먼저 사파리로 열어 주세요.');
+    say('① 크롬 오른쪽 위 <b>⋮</b> 메뉴를 눌러요.<br>② <b>앱 설치</b> 또는 <b>홈 화면에 추가</b>를 눌러요.<br>※ 크롬이 아닌 앱에서 열었다면 먼저 크롬으로 열어 주세요.');
+  };
+})();
+</script>
 </body>
 </html>
