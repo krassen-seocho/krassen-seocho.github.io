@@ -78,8 +78,9 @@ button,a.b{margin-top:14px;border:0;background:#1b2a66;color:#fff;font-weight:70
     try { localStorage.setItem(KEY, j.result); } catch (e) {}
     return j.result;
   });
-  if (cached) { fresh.catch(function () {}); show(cached); }
-  else fresh.then(show, fail);
+  function ready(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setTimeout(f, 0); }); else setTimeout(f, 0); }
+  if (cached) { fresh.catch(function () {}); ready(function () { show(cached); }); }
+  else fresh.then(function (h) { ready(function () { show(h); }); }, fail);
 })();
 </script>
 </body>
