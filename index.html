@@ -2,86 +2,86 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>크라센 서초</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#1b2a66">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="크라센 서초">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" href="icon-192.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
 <style>
-:root{--bg:#eef1f8;--surface:#fff;--ink:#141b38;--muted:#5b6385;--navy:#1b2a66;--line:#dfe3ef;--accent:#d93a2b}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-header{background:var(--navy);color:#fff;padding:calc(22px + env(safe-area-inset-top)) 20px 26px}
-.brand{display:flex;align-items:center;gap:12px;max-width:560px;margin:0 auto}
-.mark{width:38px;height:44px;background:#fff;color:var(--navy);font:900 24px/42px 'Noto Sans KR';text-align:center;clip-path:polygon(0 0,100% 0,100% 70%,50% 100%,0 70%)}
-.brand b{display:block;font-size:19px;letter-spacing:.14em;font-weight:900}
-.brand small{font-size:13px;opacity:.75;letter-spacing:.12em}
-main{max-width:560px;margin:0 auto;padding:22px 16px calc(32px + env(safe-area-inset-bottom))}
-h1{font-size:22px;margin:4px 2px 4px}
-.lead{color:var(--muted);font-size:14px;margin:0 2px 18px}
-.menu{display:grid;gap:12px}
-.item{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;text-decoration:none;color:inherit;box-shadow:0 2px 8px rgba(20,27,56,.05);transition:transform .1s}
-.item:active{transform:scale(.98)}
-.ico{flex:none;width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:26px}
-.item h2{font-size:17px;margin:0 0 3px}
-.item p{margin:0;font-size:13px;color:var(--muted);line-height:1.5}
-.item .go{margin-left:auto;color:#a2a9c4;font-size:22px}
-#inst{margin-top:22px;text-align:center}
-#inst-btn{width:100%;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:13px;font:700 15px 'Noto Sans KR',sans-serif;color:var(--navy);cursor:pointer}
-#inst-help{margin:10px 0 0;line-height:1.7;text-align:left;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--muted)}
-.muted{color:var(--muted)} .small{font-size:13px}
-footer{text-align:center;color:#9aa1bd;font-size:12px;letter-spacing:.1em;margin-top:28px}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:#eef1f8;font-family:'Noto Sans KR',system-ui,sans-serif;color:#141b38}
+.box{text-align:center;padding:24px}
+.spin{width:38px;height:38px;border:4px solid #d5dbec;border-top-color:#1b2a66;border-radius:50%;animation:s 1s linear infinite;margin:0 auto 16px}
+@keyframes s{to{transform:rotate(360deg)}}
+p{margin:6px 0;color:#4b5375;font-size:14px}
+button,a.b{margin-top:14px;border:0;background:#1b2a66;color:#fff;font-weight:700;padding:11px 18px;border-radius:10px;font-size:14px;text-decoration:none;display:inline-block}
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="mark">K</div><div><b>KRASSEN</b><small>SEOCHO · 크라센 서초</small></div></div></header>
-<main>
-  <h1>무엇을 할까요?</h1>
-  <p class="lead">아래에서 하려는 것을 눌러 주세요.</p>
-  <nav class="menu">
-    <a class="item" href="selc.html?app=hw"><span class="ico" style="background:#e8ecfa">📸</span><div><h2>숙제 인증</h2><p>숙제 사진 올리고 선생님 코멘트 확인</p></div><span class="go">›</span></a>
-    <a class="item" href="selc.html"><span class="ico" style="background:#fbf1dc">📝</span><div><h2>SELC 후기</h2><p>TOEFL Junior · 모의고사 풀이 인증</p></div><span class="go">›</span></a>
-    <a class="item" href="selc.html?page=zoom"><span class="ico" style="background:#e3f3ec">📚</span><div><h2>줌독서실</h2><p>입장 · 퇴장 체크와 공부 시간</p></div><span class="go">›</span></a>
-    <a class="item" href="selc.html?page=hof"><span class="ico" style="background:#fde8e5">🏆</span><div><h2>명예의 전당</h2><p>열심히 공부한 친구들</p></div><span class="go">›</span></a>
-  </nav>
-  <div id="inst" hidden>
-    <button type="button" id="inst-btn">📲 앱으로 설치하기</button>
-    <p id="inst-help" hidden></p>
-  </div>
-  <footer>KRASSEN SEOCHO</footer>
-</main>
+<div class="box" id="box"><div class="spin"></div><b>불러오는 중…</b><p>처음 열 때는 몇 초 걸릴 수 있어요.</p></div>
 <script>
 (function () {
-  var ua = navigator.userAgent, box = document.getElementById('inst'), btn = document.getElementById('inst-btn'), help = document.getElementById('inst-help');
-  var standalone = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone;
-  if (standalone) return;
-  var ios = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-  var kakao = /KAKAOTALK/i.test(ua), deferred = null;
-  window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); deferred = e; });
-  window.addEventListener('appinstalled', function () { box.hidden = true; });
-  if (!/Mobi|Android|iPhone|iPad/i.test(ua) && !ios) return;
-  box.hidden = false;
-  function say(t) { help.innerHTML = t; help.hidden = false; }
-  btn.onclick = function () {
-    if (kakao) {
-      if (ios) return say('카카오톡 안에서는 설치가 안 돼요.<br>오른쪽 아래 <b>⋯</b> 또는 공유 버튼 → <b>Safari로 열기</b>를 누른 뒤, 다시 이 버튼을 눌러 주세요.');
-      location.href = 'kakaotalk://web/openExternal?url=' + encodeURIComponent(location.href); return;
+  var API = 'https://script.google.com/macros/s/AKfycbwFLEFtJGSrORQM4B9atmjGkJQGg5xjYxDLadDN2mnxiSqxnMpR1eHAK3smAV3cT4IH8g/exec';
+  var KEY = 'krassen_page_v2';
+  try { localStorage.removeItem('krassen_selc_page_v1'); localStorage.removeItem('krassen_hw_page_v1'); } catch (e) {}
+  function post(fn, args) {
+    return fetch(API, { method: 'POST', credentials: 'omit', redirect: 'follow',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ fn: fn, args: args || [] }) })
+      .then(function (r) { return r.json(); });
+  }
+  var SHIM = '(' + function (API) {
+    function call(fn, args, ok, fail, uo) {
+      fetch(API, { method: 'POST', credentials: 'omit', redirect: 'follow',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ fn: fn, args: args }) })
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          if (j && j.ok) { if (ok) ok(j.result, uo); }
+          else if (fail) fail(new Error((j && j.error) || '잠시 후 다시 시도해주세요.'), uo);
+        }, function () { if (fail) fail(new Error('인터넷 연결을 확인하고 다시 시도해주세요.'), uo); });
     }
-    if (deferred) { deferred.prompt(); deferred.userChoice.then(function () { deferred = null; }); return; }
-    if (ios) return say('① 사파리 아래쪽 <b>공유 버튼</b>(네모에 화살표 ↑)을 눌러요.<br>② <b>홈 화면에 추가</b>를 누르고 [추가]를 눌러요.<br>※ 사파리가 아닌 앱(카톡·네이버 등)에서 열었다면 먼저 사파리로 열어 주세요.');
-    say('① 크롬 오른쪽 위 <b>⋮</b> 메뉴를 눌러요.<br>② <b>앱 설치</b> 또는 <b>홈 화면에 추가</b>를 눌러요.<br>※ 크롬이 아닌 앱에서 열었다면 먼저 크롬으로 열어 주세요.');
-  };
+    function runner(ok, fail, uo) {
+      return new Proxy({}, { get: function (_, k) {
+        if (k === 'withSuccessHandler') return function (h) { return runner(h, fail, uo); };
+        if (k === 'withFailureHandler') return function (h) { return runner(ok, h, uo); };
+        if (k === 'withUserObject') return function (o) { return runner(ok, fail, o); };
+        if (typeof k !== 'string') return undefined;
+        return function () { call(k, Array.prototype.slice.call(arguments), ok, fail, uo); };
+      } });
+    }
+    window.google = window.google || {};
+    window.google.script = {
+      run: runner(null, null, undefined),
+      url: { getLocation: function (cb) {
+        var p = {}, ps = {};
+        new URLSearchParams(location.search).forEach(function (v, k) { p[k] = v; (ps[k] = ps[k] || []).push(v); });
+        cb({ parameter: p, parameters: ps, hash: location.hash.slice(1) });
+      } },
+      host: { close: function () {}, setHeight: function () {}, setWidth: function () {}, editor: { focus: function () {} } },
+      history: { push: function () {}, replace: function () {}, setChangeHandler: function () {} }
+    };
+  }.toString() + ')(' + JSON.stringify(API) + ');';
+  var HOME = '<a href="./" aria-label="홈으로" style="position:fixed;left:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:99999;background:rgba(27,42,102,.92);color:#fff;font:700 13px/1 sans-serif;padding:10px 14px;border-radius:999px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.25)">⌂ 홈</a>';
+  var HEADX = '<link rel="manifest" href="manifest.json"><meta name="theme-color" content="#1b2a66"><link rel="apple-touch-icon" href="icon-180.png">';
+  function show(html) {
+    html = html.replace(/<base[^>]*>/i, '');
+    var tag = '<script>' + SHIM + '<\/script>';
+    if (/<head[^>]*>/i.test(html)) html = html.replace(/<head[^>]*>/i, function (m) { return m + tag + HEADX; });
+    else html = tag + html;
+    document.open(); document.write(html); document.close();
+  }
+  function fail() {
+    document.getElementById('box').innerHTML = '<b>화면을 불러오지 못했어요</b><p>인터넷 연결을 확인하고 다시 시도해주세요.</p><button onclick="location.reload()">다시 시도</button><br>';
+  }
+  var cached = null; try { cached = localStorage.getItem(KEY); } catch (e) {}
+  var fresh = post('__page').then(function (j) {
+    if (!j || !j.ok || !j.result) throw new Error('page');
+    try { localStorage.setItem(KEY, j.result); } catch (e) {}
+    return j.result;
+  });
+  function ready(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setTimeout(f, 0); }); else setTimeout(f, 0); }
+  if (cached) { fresh.catch(function () {}); ready(function () { show(cached); }); }
+  else fresh.then(function (h) { ready(function () { show(h); }); }, fail);
 })();
-</script>
-<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(function(){});
-// SELC·줌독 화면을 미리 받아 두면 다음에 더 빨리 열려요
-setTimeout(function(){ try { if (!localStorage.getItem('krassen_selc_page_v1')) fetch('https://script.google.com/macros/s/AKfycbwFLEFtJGSrORQM4B9atmjGkJQGg5xjYxDLadDN2mnxiSqxnMpR1eHAK3smAV3cT4IH8g/exec',{method:'POST',credentials:'omit',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({fn:'__page',args:[]})}).then(function(r){return r.json()}).then(function(j){ if(j&&j.ok&&j.result) localStorage.setItem('krassen_selc_page_v1', j.result); }).catch(function(){}); } catch(e){} }, 1500);
 </script>
 </body>
 </html>
