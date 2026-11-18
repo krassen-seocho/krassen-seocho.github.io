@@ -22,8 +22,8 @@ button,a.b{margin-top:14px;border:0;background:#1b2a66;color:#fff;font-weight:70
 <script>
 (function () {
   var API = 'https://script.google.com/macros/s/AKfycbwFLEFtJGSrORQM4B9atmjGkJQGg5xjYxDLadDN2mnxiSqxnMpR1eHAK3smAV3cT4IH8g/exec';
-  var KEY = 'krassen_page_v2';
-  try { localStorage.removeItem('krassen_selc_page_v1'); localStorage.removeItem('krassen_hw_page_v1'); } catch (e) {}
+  var KEY = 'krassen_page_v3';
+  try { ['krassen_selc_page_v1','krassen_hw_page_v1','krassen_page_v2'].forEach(function (k) { localStorage.removeItem(k); }); } catch (e) {}
   function post(fn, args) {
     return fetch(API, { method: 'POST', credentials: 'omit', redirect: 'follow',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ fn: fn, args: args || [] }) })
@@ -61,7 +61,7 @@ button,a.b{margin-top:14px;border:0;background:#1b2a66;color:#fff;font-weight:70
     };
   }.toString() + ')(' + JSON.stringify(API) + ');';
   var HOME = '<a href="./" aria-label="홈으로" style="position:fixed;left:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:99999;background:rgba(27,42,102,.92);color:#fff;font:700 13px/1 sans-serif;padding:10px 14px;border-radius:999px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.25)">⌂ 홈</a>';
-  var HEADX = '<link rel="manifest" href="manifest.json"><meta name="theme-color" content="#1b2a66"><link rel="apple-touch-icon" href="icon-180.png">';
+  var HEADX = '<link rel="manifest" href="manifest.json"><meta name="theme-color" content="#1b2a66"><link rel="apple-touch-icon" href="icon-180.png"><script>if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(function(){})<\/script>';
   function show(html) {
     html = html.replace(/<base[^>]*>/i, '');
     var tag = '<script>' + SHIM + '<\/script>';
@@ -73,8 +73,8 @@ button,a.b{margin-top:14px;border:0;background:#1b2a66;color:#fff;font-weight:70
     document.getElementById('box').innerHTML = '<b>화면을 불러오지 못했어요</b><p>인터넷 연결을 확인하고 다시 시도해주세요.</p><button onclick="location.reload()">다시 시도</button><br>';
   }
   var cached = null; try { cached = localStorage.getItem(KEY); } catch (e) {}
-  var fresh = post('__page').then(function (j) {
-    if (!j || !j.ok || !j.result) throw new Error('page');
+  function getPage() { return post('hwAppPage').then(function (j) { if (!j || !j.ok || !j.result) throw new Error('page'); return j; }); }
+  var fresh = getPage().catch(function () { return getPage(); }).then(function (j) {
     try { localStorage.setItem(KEY, j.result); } catch (e) {}
     return j.result;
   });
