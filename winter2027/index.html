@@ -178,7 +178,7 @@ footer{padding:28px 20px 44px;text-align:center;font:17px "Jua",sans-serif;color
     </div>
   </section>
 
-  <footer>꿈을 키우는 영어교육, 크라센어학원</footer>
+  <footer>꿈을 키우는 영어교육, 크라센어학원<small style="display:block;margin-top:10px;font:12px/1.5 'Noto Sans KR',sans-serif;color:var(--sub)">배경음악: 비발디 「사계」 중 「겨울」 2악장 — John Harrison(바이올린), Wichita State University Chamber Players · <a href="https://commons.wikimedia.org/wiki/File:11_-_Vivaldi_Winter_mvt_2_Largo_-_John_Harrison_violin.ogg" style="color:inherit">CC BY-SA</a></small></footer>
 </main>
 
 <div id="zoom" role="dialog" aria-label="크게 보기"><button id="zoomClose" type="button" aria-label="닫기">✕</button><img id="zoomImg" alt=""><p>두 손가락으로 벌려서 더 크게 볼 수 있어요</p></div>
@@ -203,8 +203,11 @@ const PHONES = { "압구정": "02-541-8280", "서초": "02-6261-8280", "잠실":
 // 3) 구글 시트 연결 주소 (Apps Script 배포 후 받은 주소)
 const SHEET_URL = "https://script.google.com/macros/s/AKfycbxfWLcKx_YQuzXFz58W7OFll6dpm6sc-HCM27Yv3c7MYrUwed87aJt-JOmhV1wMz8hwQg/exec";
 
-// 4) 배경음악 파일 (예: "bgm.mp3") — 비워두면 음악 버튼이 안 보여요
-const BGM_FILE = "";
+// 4) 배경음악 — 비발디 「겨울」 2악장 (John Harrison 연주, CC BY-SA) · 비우면 음악 버튼이 안 보여요
+const BGM_FILES = [
+  "https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b1/11_-_Vivaldi_Winter_mvt_2_Largo_-_John_Harrison_violin.ogg/11_-_Vivaldi_Winter_mvt_2_Largo_-_John_Harrison_violin.ogg.mp3",
+  "https://upload.wikimedia.org/wikipedia/commons/b/b1/11_-_Vivaldi_Winter_mvt_2_Largo_-_John_Harrison_violin.ogg"
+];
 
 // 5) 학년별 안내 — 캠퍼스별 일정은 포스터 내용 그대로 옮겼어요
 const GRADES = [
@@ -278,20 +281,29 @@ function render(){
   });
 }
 
-function openPage(name){
+function playBgm(){
+  const a = $("bgm"); a.volume = 0.6;
+  a.play().then(() => { $("bgmBtn").textContent = "❚❚"; }).catch(() => {});
+}
+
+function openPage(name, fromClick){
   campus = name;
   render();
   $("main").hidden = false;
   $("gate").classList.add("hide");
   setTimeout(() => $("gate").remove(), 700);
-  if (BGM_FILE) { $("bgm").src = BGM_FILE; $("bgmBtn").style.display = "block"; }
+  if (BGM_FILES.length) {
+    $("bgm").innerHTML = BGM_FILES.map(u => `<source src="${u}" type="audio/${u.endsWith(".mp3") ? "mpeg" : "ogg"}">`).join("");
+    $("bgmBtn").style.display = "block";
+    if (fromClick) playBgm();
+  }
   try { sessionStorage.setItem("krassen-winter-campus", name); } catch(e) {}
 }
 
 $("gateForm").addEventListener("submit", e => {
   e.preventDefault();
   const code = $("code").value.trim().toUpperCase();
-  if (CAMPUS_CODES[code]) openPage(CAMPUS_CODES[code]);
+  if (CAMPUS_CODES[code]) openPage(CAMPUS_CODES[code], true);
   else $("gateMsg").textContent = "코드가 맞지 않아요. 다시 확인해 주세요.";
 });
 try { const saved = sessionStorage.getItem("krassen-winter-campus"); if (saved && Object.values(CAMPUS_CODES).includes(saved)) openPage(saved); } catch(e) {}
@@ -307,7 +319,7 @@ document.addEventListener("keydown", e => { if (e.key === "Escape") $("zoom").cl
 
 $("bgmBtn").addEventListener("click", () => {
   const a = $("bgm");
-  if (a.paused) { a.play().catch(() => {}); $("bgmBtn").textContent = "❚❚"; }
+  if (a.paused) playBgm();
   else { a.pause(); $("bgmBtn").textContent = "♪"; }
 });
 
