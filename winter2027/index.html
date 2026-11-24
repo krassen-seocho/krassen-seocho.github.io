@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>크라센 2027 겨울방학 안내</title>
+<meta property="og:title" content="크라센어학원 2027 겨울방학 커리큘럼 안내">
+<meta property="og:description" content="캠퍼스 코드를 입력하고 우리 아이 학년 커리큘럼을 확인하세요.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/*
+VOICE: 다정한 겨울 초대장. 학원 포스터의 손글씨 느낌 그대로.
+IDEA: 모바일 청첩장 — 봉투(코드)를 열면 학년별 포스터를 한 장씩 넘겨보는 겨울 초대장.
+PICTURE: 보내주신 학년별 포스터 자체가 그림. 페이지는 액자 역할.
+COLOUR and TYPE: 네이비 #0d3360 + 노랑 #ffc400, 학년마다 포스터 배경색(민트·하늘·파랑·보라). Jua 제목 + Noto Sans KR 본문.
+LAYOUT: 폭 520px 한 줄 모바일 카드, 학년마다 색 띠.
+*/
+:root{--navy:#0d3360;--yellow:#ffc400;--snow:#fff;--ink:#16243a;--sub:#5b6678;--line:#dfe5ee;--bg:#eef3f9;
+--elem:#7de9e0;--pre1:#7ec8ea;--pre2:#7aa7ea;--pre3:#7b80ea}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 "Noto Sans KR",system-ui,sans-serif;overflow-x:clip}
+.wrap{max-width:520px;margin:0 auto;background:var(--snow);min-height:100vh;box-shadow:0 0 40px rgba(13,51,96,.12)}
+h1,h2,h3,.jua{font-family:"Jua","Noto Sans KR",sans-serif;font-weight:400;line-height:1.2;text-wrap:balance;margin:0}
+h2{font-size:30px;color:var(--navy)}
+p{margin:0 0 10px}
+.pill{display:inline-flex;border-radius:999px;overflow:hidden;font-family:"Jua",sans-serif;font-size:16px;border:3px solid var(--navy)}
+.pill span{padding:4px 12px;background:var(--navy);color:#fff}.pill b{font-weight:400;padding:4px 12px;background:var(--yellow);color:var(--navy)}
+.btn{display:block;width:100%;font:inherit;font-weight:700;font-size:17px;padding:14px;border:0;border-radius:14px;background:var(--navy);color:#fff;cursor:pointer;min-height:52px}
+.btn.y{background:var(--yellow);color:var(--navy)}
+.btn:focus-visible,input:focus-visible,button:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.snow{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,#fff 1.5px,transparent 2px),radial-gradient(circle,#fff 1px,transparent 1.5px);background-size:46px 46px,29px 29px;background-position:0 0,13px 17px;opacity:.7}
+
+/* 입장 */
+#gate{position:fixed;inset:0;z-index:30;background:var(--navy);color:#fff;display:grid;place-items:center;padding:24px;transition:opacity .6s}
+#gate.hide{opacity:0;pointer-events:none}
+.gate-box{position:relative;width:100%;max-width:360px;text-align:center}
+.seal{width:96px;height:96px;margin:0 auto 18px;border-radius:50%;background:var(--yellow);color:var(--navy);display:grid;place-items:center;font:44px "Jua",sans-serif;box-shadow:0 0 0 6px rgba(255,196,0,.25)}
+.gate-box h1{font-size:34px}
+.gate-box .sub{color:#c9d6ea;margin-top:8px;font-size:15px}
+#code{width:100%;margin-top:28px;font:600 20px "Noto Sans KR",sans-serif;padding:14px;border:0;border-radius:14px;text-align:center;letter-spacing:.12em;text-transform:uppercase}
+#code::placeholder{letter-spacing:0;font-size:15px;font-weight:400;text-transform:none}
+.gate-box .btn{margin-top:12px}
+#gateMsg{min-height:24px;margin-top:10px;color:var(--yellow);font-size:14px}
+
+/* 커버 */
+.cover{position:relative;overflow:hidden;background:var(--navy);color:#fff;text-align:center;padding:56px 24px 44px}
+.cover h1{position:relative;font-size:46px;margin:18px 0 8px}
+.cover h1 em{font-style:normal;color:var(--yellow)}
+.cover .camp{position:relative;display:inline-block;margin-top:10px;padding:5px 16px;border-radius:999px;background:var(--yellow);color:var(--navy);font:20px "Jua",sans-serif}
+.cover p{position:relative;color:#c9d6ea;margin-top:18px}
+.jump{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:22px}
+.jump a{color:var(--navy);background:#fff;text-decoration:none;font:17px "Jua",sans-serif;padding:8px 14px;border-radius:999px;min-height:44px;display:inline-flex;align-items:center}
+
+/* 학년 섹션 */
+.grade{padding:40px 0 34px;text-align:center;background:var(--c)}
+.grade h2{padding:0 20px}
+.grade .lead{padding:0 24px;margin-top:6px;color:var(--navy);font-weight:500}
+.sched{margin:18px 20px 0;padding:14px 16px;background:#fff;border-radius:16px;text-align:left;box-shadow:0 3px 0 var(--navy)}
+.sched div{display:grid;grid-template-columns:72px 1fr;gap:8px;align-items:baseline;padding:3px 0}
+.sched dt{font:15px "Jua",sans-serif;color:var(--navy)}
+.sched dd{margin:0;font-weight:700;white-space:nowrap}
+.sched small{display:block;color:var(--sub);font-size:13px;margin-top:4px}
+.gal{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px 20px 6px;scrollbar-width:none}
+.gal::-webkit-scrollbar{display:none}
+.gal button{flex:0 0 88%;scroll-snap-align:center;padding:0;border:0;background:none;cursor:zoom-in;border-radius:14px;overflow:hidden;box-shadow:0 6px 18px rgba(13,51,96,.18)}
+.gal.one button{flex-basis:100%}
+.gal img{display:block;width:100%;height:auto;background:#fff}
+.nav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:10px}
+.nav button{width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:var(--navy);font-size:20px;cursor:pointer;box-shadow:0 2px 0 var(--navy)}
+.nav span{font:17px "Jua",sans-serif;color:var(--navy);min-width:48px}
+.tip{font-size:13px;color:var(--navy);opacity:.75;margin-top:6px}
+
+/* 일반 섹션 */
+.sec{padding:44px 20px;text-align:center;border-top:1px solid var(--line)}
+.sec .lead{margin:8px 0 18px;color:var(--sub)}
+.poster{display:block;width:100%;border:0;padding:0;background:none;border-radius:14px;overflow:hidden;box-shadow:0 6px 18px rgba(13,51,96,.15);cursor:zoom-in}
+.poster img{display:block;width:100%;height:auto}
+.poster+.poster{margin-top:16px}
+.call{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:16px;padding:14px 16px;border-radius:14px;background:var(--bg);text-align:left}
+.call b{font:18px "Jua",sans-serif;color:var(--navy)}
+.call a{font-weight:700;color:var(--navy);white-space:nowrap;text-decoration:none;border-bottom:2px solid var(--yellow)}
+
+/* 신청 */
+#apply{background:var(--bg)}
+form{text-align:left;margin-top:20px}
+label{display:block;font-size:14px;font-weight:700;margin:16px 0 6px;color:var(--navy)}
+input[type=text]{width:100%;font:inherit;font-size:16px;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;min-height:50px}
+.progs{display:grid;gap:8px}
+.prog{display:flex;align-items:center;gap:12px;margin:0;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;min-height:56px;font-weight:400;color:var(--ink)}
+.prog input{width:22px;height:22px;accent-color:var(--navy);flex:none}
+.prog b{display:block;font:18px "Jua",sans-serif;color:var(--navy)}
+.prog small{color:var(--sub);font-size:13px;line-height:1.4;display:block}
+.prog:has(input:checked){border-color:var(--navy);background:#fff8dc}
+#applyForm .btn{margin-top:22px}
+#formMsg{min-height:24px;margin-top:12px;text-align:center;font-size:15px}
+.done{margin-top:20px;padding:28px 16px;border-radius:16px;background:#fff;text-align:center;box-shadow:0 3px 0 var(--navy)}
+.done h3{font-size:26px;color:var(--navy);margin-bottom:8px}
+footer{padding:28px 20px 44px;text-align:center;font:17px "Jua",sans-serif;color:var(--navy);background:var(--bg)}
+
+/* 확대 보기 */
+#zoom{position:fixed;inset:0;z-index:40;background:rgba(10,20,40,.94);overflow:auto;display:none;padding:56px 0 24px}
+#zoom.on{display:block}
+#zoom img{display:block;width:100%;max-width:900px;margin:0 auto}
+#zoomClose{position:fixed;top:10px;right:10px;width:44px;height:44px;border-radius:50%;border:0;background:#fff;font-size:22px;cursor:pointer}
+#zoom p{color:#c9d6ea;text-align:center;font-size:13px;margin-top:10px}
+
+#bgmBtn{position:fixed;top:12px;right:max(12px,calc(50% - 248px));z-index:20;width:44px;height:44px;border-radius:50%;border:0;background:var(--yellow);color:var(--navy);box-shadow:0 2px 8px rgba(0,0,0,.2);font-size:18px;cursor:pointer;display:none}
+@media (prefers-reduced-motion:no-preference){.seal{animation:bob 3s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-6px)}}}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="snow"></div>
+  <div class="gate-box">
+    <div class="seal">K</div>
+    <h1>2027 겨울방학<br>커리큘럼 안내</h1>
+    <div class="sub">크라센어학원</div>
+    <form id="gateForm" autocomplete="off">
+      <input id="code" type="text" placeholder="안내받은 캠퍼스 코드를 입력해 주세요" aria-label="캠퍼스 코드">
+      <button class="btn y" type="submit">안내문 열기</button>
+    </form>
+    <div id="gateMsg" role="alert"></div>
+  </div>
+</div>
+
+<button id="bgmBtn" type="button" aria-label="배경음악 켜기/끄기">♪</button>
+<audio id="bgm" loop preload="none"></audio>
+
+<main class="wrap" id="main" hidden>
+  <section class="cover">
+    <div class="snow"></div>
+    <div class="pill" style="position:relative"><span>2027</span><b>겨울방학</b></div>
+    <h1>완벽한 영어 내공을 위한<br><em>[준비운동]</em></h1>
+    <div class="camp" id="campName"></div>
+    <p>학년별 커리큘럼을 확인하시고<br>맨 아래에서 신청해 주세요.</p>
+    <nav class="jump" id="jump"></nav>
+  </section>
+
+  <div id="grades"></div>
+
+  <section class="sec" id="special">
+    <h2>함께하면 좋은 겨울 프로그램</h2>
+    <p class="lead">방학을 알차게 채워줄 프로그램이에요</p>
+    <div id="specialList"></div>
+  </section>
+
+  <section class="sec" id="vocab">
+    <h2>미리 준비하는<br>어휘 경시대회!</h2>
+    <p class="lead">2027학년도 제5회 크라센배 어휘 경시대회가 2월에 열려요.<br>겨울방학 동안 어휘력 차곡차곡 쌓아두기!</p>
+    <button class="poster" type="button" data-zoom="KakaoTalk_20261125_021738687.png"><img src="KakaoTalk_20261125_021738687.png" alt="2027학년도 제5회 크라센배 어휘 경시대회 안내" loading="lazy"></button>
+  </section>
+
+  <section class="sec" id="contact">
+    <h2>문의</h2>
+    <p class="lead">궁금한 점은 담임 선생님이나 캠퍼스로 연락 주세요</p>
+    <button class="poster" type="button" data-zoom="KakaoTalk_20261125_021555079_04.png"><img src="KakaoTalk_20261125_021555079_04.png" alt="캠퍼스별 연락처" loading="lazy"></button>
+    <div id="myCall"></div>
+  </section>
+
+  <section class="sec" id="apply">
+    <h2>신청하기</h2>
+    <p class="lead" style="margin-bottom:0">참여할 프로그램을 골라 제출해 주세요</p>
+    <div id="formArea">
+      <form id="applyForm" novalidate>
+        <label for="f-name">학생 이름</label><input type="text" id="f-name" autocomplete="off">
+        <label for="f-school">학교</label><input type="text" id="f-school" autocomplete="off">
+        <label for="f-grade">학년</label><input type="text" id="f-grade" placeholder="예: 초6, 중2" autocomplete="off">
+        <label for="f-level">레벨</label><input type="text" id="f-level" placeholder="예: L6, Inter" autocomplete="off">
+        <label for="f-teacher">담임T 이름</label><input type="text" id="f-teacher" autocomplete="off">
+        <label>참여할 프로그램 <span style="font-weight:400;color:var(--sub)">(여러 개 선택 가능)</span></label>
+        <div class="progs" id="progs"></div>
+        <button class="btn" type="submit" id="submitBtn">신청서 제출하기</button>
+        <div id="formMsg" role="status"></div>
+      </form>
+    </div>
+  </section>
+
+  <footer>꿈을 키우는 영어교육, 크라센어학원</footer>
+</main>
+
+<div id="zoom" role="dialog" aria-label="크게 보기"><button id="zoomClose" type="button" aria-label="닫기">✕</button><img id="zoomImg" alt=""><p>두 손가락으로 벌려서 더 크게 볼 수 있어요</p></div>
+
+<script>
+{
+/* ================= 여기만 수정하면 돼요 ================= */
+
+// 1) 캠퍼스별 입장 코드 (코드: 캠퍼스) — 임시 코드예요
+const CAMPUS_CODES = {
+  "AP2027": "압구정",
+  "SC2027": "서초",
+  "JS2027": "잠실",
+  "BD2027": "분당",
+  "SD2027": "성동"
+};
+
+// 2) 캠퍼스 전화번호 (성동은 번호 받으면 채우기)
+const PHONES = { "압구정": "02-541-8280", "서초": "02-6261-8280", "잠실": "02-6953-8289", "분당": "031-697-8186", "성동": "" };
+
+// 3) 구글 시트 연결 주소 (Apps Script 배포 후 받은 주소)
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbxfWLcKx_YQuzXFz58W7OFll6dpm6sc-HCM27Yv3c7MYrUwed87aJt-JOmhV1wMz8hwQg/exec";
+
+// 4) 배경음악 파일 (예: "bgm.mp3") — 비워두면 음악 버튼이 안 보여요
+const BGM_FILE = "";
+
+// 5) 학년별 안내 — 캠퍼스별 일정은 포스터 내용 그대로 옮겼어요
+const GRADES = [
+  { id: "elem", title: "초등", lead: "영자신문 읽고, Summary까지!", color: "var(--elem)",
+    imgs: ["elem-0","elem-1","elem-2","elem-3","elem-4"],
+    sched: { "압구정":["1/7 (목) - 1/8 (금)","오후 1:10 - 5:10"], "서초":["1/7 (목) - 1/8 (금)","오후 1:10 - 5:10"], "성동":["1/7 (목) - 1/8 (금)","오후 1:10 - 5:10"],
+             "잠실":["1/4 (월) - 1/5 (화)","오후 1:10 - 5:10"], "분당":["1/4 (월) - 1/5 (화)","오후 1:30 - 5:30"] } },
+  { id: "pre1", title: "예비중1", lead: "중학교 첫걸음, RST로 단단하게!", color: "var(--pre1)",
+    imgs: ["pre1-0","pre1-1","pre1-2","pre1-3","pre1-4"],
+    sched: { "압구정":["1/7 (목) - 1/8 (금)","오후 5:20 - 9:00"], "서초":["1/7 (목) - 1/8 (금)","오후 5:20 - 9:00"], "성동":["1/7 (목) - 1/8 (금)","오후 5:20 - 9:00"],
+             "잠실":["1/4 (월) - 1/5 (화)","오후 5:20 - 9:00"], "분당":["1/4 (월) - 1/5 (화)","오후 5:30 - 9:00"] } },
+  { id: "pre2", title: "예비중2", lead: "핵심 구조 개념 정립 & 영작+서술형 훈련", color: "var(--pre2)",
+    imgs: ["pre2-0","pre2-1","pre2-2","pre2-3"],
+    sched: { "압구정":["1/7 (목) - 1/8 (금)","오후 5:20 - 10:00"], "서초":["1/7 (목) - 1/8 (금)","오후 5:20 - 10:00"],
+             "잠실":["1/4 (월) - 1/5 (화)","오후 5:20 - 10:00"], "분당":["1/4 (월) - 1/5 (화)","오후 5:30 - 10:00"] } },
+  { id: "pre3", title: "예비중3", lead: "고등 서술형 맛보기 & 주변 고교 내신 기출 맛보기", color: "var(--pre3)",
+    imgs: ["pre3-0","pre3-1","pre3-2","pre3-3","pre3-4","pre3-5","pre3-6"],
+    sched: { "압구정":["12/21 (월) - 12/22 (화)","오후 5:20 - 10:00"], "서초":["12/21 (월) - 12/22 (화)","오후 5:20 - 10:00"],
+             "잠실":["12/21 (월) - 12/22 (화)","오후 5:20 - 10:00"], "분당":["12/21 (월) - 12/22 (화)","오후 5:30 - 10:00"] } }
+];
+
+// 6) 겨울 프로그램 포스터
+const SPECIAL = [
+  { img: "onetotwelve", title: "원투투웰브(1 to 12) 프로젝트", desc: "1/11 (월) - 1/12 (화) 개강 · 오후 1시부터 밤 12시까지 ELC + 정규수업 + 줌독" },
+  { img: "taeyeolsi", title: "예비중1 태열시", desc: "월화목금 저녁 9:00 - 10:00 · 재시 & RST 과제반" }
+];
+
+// 7) 신청 프로그램
+const PROGRAMS = [
+  { name: "ELC", desc: "숙제반" },
+  { name: "KSC", desc: "수요일 담임클리닉" },
+  { name: "수플알", desc: "수요 플러스 알파 · 수요특강" },
+  { name: "주경야독", desc: "일요 ELC" },
+  { name: "태열시", desc: "예비중1 · 월화목금 저녁 9-10시 재시 & RST 과제반" },
+  { name: "원투투웰브", desc: "1/11 (월) - 1/12 (화) 개강 · 오후 1시부터 밤 12시까지" }
+];
+
+/* ======================================================= */
+
+const IMG = {"elem-0": "KakaoTalk_20261125_021540995.png", "elem-1": "KakaoTalk_20261125_021540995_01.png", "elem-2": "KakaoTalk_20261125_021540995_02.png", "elem-3": "KakaoTalk_20261125_021540995_03.png", "elem-4": "KakaoTalk_20261125_021540995_04.png", "pre1-0": "KakaoTalk_20261125_021550200.png", "pre1-1": "KakaoTalk_20261125_021550200_01.png", "pre1-2": "KakaoTalk_20261125_021550200_02.png", "pre1-3": "KakaoTalk_20261125_021550200_03.png", "pre1-4": "KakaoTalk_20261125_021550200_04.png", "pre2-0": "KakaoTalk_20261125_021555079.png", "pre2-1": "KakaoTalk_20261125_021555079_01.png", "pre2-2": "KakaoTalk_20261125_021555079_02.png", "pre2-3": "KakaoTalk_20261125_021555079_03.png", "pre3-0": "KakaoTalk_20261125_021603654.png", "pre3-1": "KakaoTalk_20261125_021603654_01.png", "pre3-2": "KakaoTalk_20261125_021603654_02.png", "pre3-3": "KakaoTalk_20261125_021603654_03.png", "pre3-4": "KakaoTalk_20261125_021603654_04.png", "pre3-5": "KakaoTalk_20261125_021603654_05.png", "pre3-6": "KakaoTalk_20261125_021603654_06.png", "onetotwelve": "KakaoTalk_20261125_021738687_01.png", "taeyeolsi": "KakaoTalk_20261125_022630631.jpg"};
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let campus = "";
+
+function render(){
+  $("campName").textContent = campus + " 캠퍼스";
+  const list = GRADES.filter(g => g.sched[campus]);
+  $("jump").innerHTML = list.map(g => `<a href="#${g.id}">${esc(g.title)}</a>`).join("") + `<a href="#apply">신청하기</a>`;
+  $("grades").innerHTML = list.map(g => {
+    const [days, time] = g.sched[campus];
+    const slides = g.imgs.map((f, i) => `<button type="button" data-zoom="${IMG[f]}"><img src="${IMG[f]}" alt="${esc(g.title)} 안내 ${i+1}" loading="${i ? "lazy" : "eager"}"></button>`).join("");
+    return `<section class="grade" id="${g.id}" style="--c:${g.color}">
+      <div class="pill"><span>2027 겨울방학</span><b>${esc(g.title)}</b></div>
+      <h2 style="margin-top:14px">${esc(g.lead)}</h2>
+      <dl class="sched"><div><dt>수강기간</dt><dd>${esc(days)}</dd></div><div><dt>수업시간</dt><dd>${esc(time)}</dd></div><small>${esc(campus)} 캠퍼스 기준</small></dl>
+      <div class="gal" data-n="${g.imgs.length}">${slides}</div>
+      <div class="nav"><button type="button" class="prev" aria-label="이전">‹</button><span>1 / ${g.imgs.length}</span><button type="button" class="next" aria-label="다음">›</button></div>
+      <div class="tip">옆으로 넘기고, 누르면 크게 볼 수 있어요</div></section>`;
+  }).join("");
+  $("specialList").innerHTML = SPECIAL.map(s => `<button class="poster" type="button" data-zoom="${IMG[s.img]}"><img src="${IMG[s.img]}" alt="${esc(s.title)}" loading="lazy"></button><p class="lead" style="margin:10px 0 24px"><b class="jua" style="font-size:19px;color:var(--navy)">${esc(s.title)}</b><br>${esc(s.desc)}</p>`).join("");
+  const ph = PHONES[campus];
+  $("myCall").innerHTML = ph ? `<div class="call"><b>${esc(campus)} 캠퍼스</b><a href="tel:${esc(ph.replace(/-/g,""))}">${esc(ph)}</a></div>` : "";
+  $("progs").innerHTML = PROGRAMS.map((p, i) => `<label class="prog" for="p${i}"><input type="checkbox" id="p${i}" value="${esc(p.name)}"><span><b>${esc(p.name)}</b>${p.desc ? `<small>${esc(p.desc)}</small>` : ""}</span></label>`).join("");
+  document.querySelectorAll(".gal").forEach(gal => {
+    const nav = gal.nextElementSibling, label = nav.querySelector("span"), n = +gal.dataset.n;
+    const idx = () => Math.round(gal.scrollLeft / gal.children[0].offsetWidth);
+    const go = d => { const i = Math.max(0, Math.min(n - 1, idx() + d)); gal.children[i].scrollIntoView({behavior:"smooth", block:"nearest", inline:"center"}); };
+    nav.querySelector(".prev").onclick = () => go(-1);
+    nav.querySelector(".next").onclick = () => go(1);
+    gal.addEventListener("scroll", () => { label.textContent = (Math.min(n - 1, idx()) + 1) + " / " + n; }, {passive:true});
+  });
+}
+
+function openPage(name){
+  campus = name;
+  render();
+  $("main").hidden = false;
+  $("gate").classList.add("hide");
+  setTimeout(() => $("gate").remove(), 700);
+  if (BGM_FILE) { $("bgm").src = BGM_FILE; $("bgmBtn").style.display = "block"; }
+  try { sessionStorage.setItem("krassen-winter-campus", name); } catch(e) {}
+}
+
+$("gateForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const code = $("code").value.trim().toUpperCase();
+  if (CAMPUS_CODES[code]) openPage(CAMPUS_CODES[code]);
+  else $("gateMsg").textContent = "코드가 맞지 않아요. 다시 확인해 주세요.";
+});
+try { const saved = sessionStorage.getItem("krassen-winter-campus"); if (saved && Object.values(CAMPUS_CODES).includes(saved)) openPage(saved); } catch(e) {}
+
+document.addEventListener("click", e => {
+  const t = e.target.closest("[data-zoom]");
+  if (!t) return;
+  $("zoomImg").src = t.dataset.zoom; $("zoom").classList.add("on"); $("zoom").scrollTop = 0;
+});
+$("zoomClose").onclick = () => $("zoom").classList.remove("on");
+$("zoom").addEventListener("click", e => { if (e.target.id === "zoom") $("zoom").classList.remove("on"); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") $("zoom").classList.remove("on"); });
+
+$("bgmBtn").addEventListener("click", () => {
+  const a = $("bgm");
+  if (a.paused) { a.play().catch(() => {}); $("bgmBtn").textContent = "❚❚"; }
+  else { a.pause(); $("bgmBtn").textContent = "♪"; }
+});
+
+$("applyForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const v = id => $(id).value.trim();
+  const data = { campus, name: v("f-name"), school: v("f-school"), grade: v("f-grade"), level: v("f-level"), teacher: v("f-teacher"),
+    programs: [...document.querySelectorAll("#progs input:checked")].map(c => c.value).join(", ") };
+  const msg = $("formMsg"), bad = t => { msg.style.color = "#c8423b"; msg.textContent = t; };
+  if (!data.name || !data.school || !data.grade || !data.level || !data.teacher) return bad("빈 칸을 모두 채워주세요.");
+  if (!data.programs) return bad("참여할 프로그램을 하나 이상 선택해 주세요.");
+  if (!SHEET_URL) return bad("아직 신청 접수가 열리지 않았어요. (구글 시트 연결 전)");
+  $("submitBtn").disabled = true; msg.style.color = "var(--sub)"; msg.textContent = "제출 중이에요...";
+  try {
+    await fetch(SHEET_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(data) });
+    $("formArea").innerHTML = `<div class="done"><h3>신청이 완료되었습니다!</h3><p>${esc(data.name)} 학생 · ${esc(data.programs)}</p><p style="color:var(--sub);font-size:14px">수정이 필요하면 담임 선생님께 말씀해 주세요.</p></div>`;
+  } catch (err) {
+    $("submitBtn").disabled = false; bad("제출이 안 됐어요. 잠시 후 다시 시도해 주세요.");
+  }
+});
+}
+</script>
+</body>
+</html>
