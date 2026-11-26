@@ -21,6 +21,8 @@ LAYOUT: 폭 520px 한 줄 모바일 카드, 학년마다 색 띠.
 *{box-sizing:border-box;min-width:0}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 "Noto Sans KR",system-ui,sans-serif;overflow-x:clip}
+body{word-break:keep-all;overflow-wrap:break-word}
+.nw{white-space:nowrap}
 .wrap{max-width:520px;margin:0 auto;background:var(--snow);min-height:100vh;box-shadow:0 0 40px rgba(13,51,96,.12)}
 h1,h2,h3,.jua{font-family:"Jua","Noto Sans KR",sans-serif;font-weight:400;line-height:1.2;text-wrap:balance;margin:0}
 h2{font-size:30px;color:var(--navy)}
@@ -180,7 +182,7 @@ footer{padding:28px 20px 44px;text-align:center;font:17px "Jua",sans-serif;color
     </div>
   </section>
 
-  <footer>꿈을 키우는 영어교육, 크라센어학원<small style="display:block;margin-top:10px;font:12px/1.5 'Noto Sans KR',sans-serif;color:var(--sub)">배경음악: 비발디 「사계」 중 「겨울」 2악장 — John Harrison(바이올린), Wichita State University Chamber Players · <a href="https://commons.wikimedia.org/wiki/File:11_-_Vivaldi_Winter_mvt_2_Largo_-_John_Harrison_violin.ogg" style="color:inherit">CC BY-SA</a></small></footer>
+  <footer>꿈을 키우는 영어교육, 크라센어학원<small style="display:block;margin-top:10px;font:12px/1.5 'Noto Sans KR',sans-serif;color:var(--sub)">배경음악: 비발디 「사계」 중 「겨울」 2악장<br><span class="nw">John Harrison(바이올린)</span>, <span class="nw">Wichita State University Chamber Players</span> · <a class="nw" href="https://commons.wikimedia.org/wiki/File:11_-_Vivaldi_Winter_mvt_2_Largo_-_John_Harrison_violin.ogg" style="color:inherit">CC BY-SA</a></small></footer>
 </main>
 
 <div id="zoom" role="dialog" aria-label="크게 보기"><button id="zoomClose" type="button" aria-label="닫기">✕</button><img id="zoomImg" alt=""><p>두 손가락으로 벌려서 더 크게 볼 수 있어요</p></div>
